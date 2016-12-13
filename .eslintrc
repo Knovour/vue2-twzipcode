@@ -1,0 +1,13 @@
+{
+  "parserOptions": {
+    "sourceType": "module"
+  },
+    "ecmaFeatures": {
+    "modules": true
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "html",
+    "vue"
+  ]
+}
