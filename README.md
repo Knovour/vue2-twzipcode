@@ -1,4 +1,4 @@
-# Vue-TWzipcode
+# Vue2-TWzipcode
 
 Rewrite [jQuery-TWzipcode](https://github.com/essoduke/jQuery-TWzipcode) in Vue2
 
