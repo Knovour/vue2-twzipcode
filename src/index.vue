@@ -61,20 +61,24 @@
 		},
 		methods: {
 			setCountyAndDistrictFromZipcode(defaultZipcode) {
-				Object.keys(Data).some(county => {
-					const districtList = Data[county];
-					Object.keys(districtList).some(district => {
-						const zipcode = districtList[district];
-						if(zipcode === defaultZipcode.toString()) {
-							this.county = county;
-							this.district = district;
+				Object
+					.keys(Data)
+					.some(county => {
+						const districtList = Data[county];
+						Object
+							.keys(districtList)
+							.some(district => {
+								const zipcode = districtList[district];
+								if(zipcode === defaultZipcode.toString()) {
+									this.county = county;
+									this.district = district;
 
-							return true;
-						}
+									return true;
+								}
 
-						return false;
-					})
-				});
+								return false;
+							});
+					});
 			},
 			resetDistrict(county = this.county) {
 				const current = Object.keys(Data[county]);
