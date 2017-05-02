@@ -1,6 +1,6 @@
 {
   "name": "vue2-twzipcode",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Rewrite jQuery-TWzipcode in Vue.js 2",
   "repository": {
     "type": "git",
@@ -8,13 +8,13 @@
   },
   "main": "dist/vue-twzipcode.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack -p --config=config/webpack.prod.config.babel.js"
+    "build": "rollup -c"
   },
   "keywords": [
     "vuejs",
     "twzipcode"
   ],
-  "author": "Casper Lai",
+  "author": "Knovour",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -22,17 +22,14 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-babili": "^0.0.12",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-es2015-rollup": "^3.0.0",
     "babel-runtime": "^6.23.0",
     "css-loader": "^0.28.0",
-    "ghooks": "^2.0.0",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-vue": "^2.3.1",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^12.0.2",
-    "vue-template-compiler": "^2.3.0",
-    "webpack": "^2.4.1",
-    "webpack-merge": "^4.1.0"
+    "vue-template-compiler": "^2.3.0"
   },
   "peerDependencies": {
     "vue": "^2.3.0"

@@ -1,5 +1,3 @@
-/**
- * Created by casperlai on 2016/6/30.
- */
+import Twzipcode from './src/index.vue';
 
-module.exports = require('./src/index.vue');
+export default Twzipcode;

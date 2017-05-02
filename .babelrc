@@ -1,10 +1,6 @@
 {
 	"presets": [
-		[ "es2015", { "modules": false } ]
-	],
-	"env": {
-    "production": {
-      "presets": [ "babili" ]
-    }
-  }
+		[ "es2015", { "modules": false } ],
+		"babili"
+	]
 }
