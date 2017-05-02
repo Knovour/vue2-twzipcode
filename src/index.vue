@@ -1,25 +1,24 @@
 <template>
 	<div :style="style">
-		<zipcode  :class-name="classNames.zipcode"  :name="names.zipcode"  v-model="zipcode"></zipcode>
-		<county   :class-name="classNames.county"   :name="names.county"   v-model.lazy="county"   :counties="counties"></county>
-		<district :class-name="classNames.district" :name="names.district" v-model.lazy="district" :districts="districts"></district>
+		<zipcode :class="classNames.zipcode" :name="names.zipcode" v-model="zipcode" :readonly="this.lockCounty"></zipcode>
+		<county :class="classNames.county" :name="names.county" :value="county" :counties="counties" @change="county = $event"></county>
+		<district :class="classNames.district" :name="names.district" :value="district" :districts="districts" @change="district = $event"></district>
 	</div>
 </template>
 
 <script>
-	import Zipcode  from './components/zipcode';
-	import County   from './components/county';
-	import District from './components/district';
+	import Zipcode  from './components/zipcode.vue';
+	import County   from './components/county.vue';
+	import District from './components/district.vue';
 
-	import Data from './data';
+	import Data from './data.js';
 
 	export default {
 		data() {
 			return {
 				zipcode: '',
 				county: '',
-				district: '',
-				counties: Object.keys(Data),
+				district: ''
 			};
 		},
 		props: {
@@ -43,11 +42,15 @@
 					}, value);
 				}
 			},
-			defaultCounty:   { type: String, default: Object.keys(Data)[0] },
-			defaultDistrict: { type: String },
-			defaultZipcode:  { type: [ Number, String ] },
+			lockCounty: [ String, Boolean ],
+			defaultCounty: { type: String, default: Object.keys(Data)[0] },
+			defaultDistrict: String,
+			defaultZipcode: [ Number, String ],
 		},
 		computed: {
+			counties() {
+				return this.lockCounty ? [ this.defaultCounty ] : Object.keys(Data);
+			},
 			districts() {
 				return this.county ? Object.keys(Data[this.county]) : [];
 			},
@@ -103,16 +106,16 @@
 				this.resetDistrict();
 		},
 		watch: {
-			zipcode(code) {
-				this.setCountyAndDistrictFromZipcode(code);
+			zipcode(val) {
+				this.setCountyAndDistrictFromZipcode(val);
 				this.dispatchUpdate();
 			},
-			county(county) {
-				this.resetDistrict(county);
+			county(val) {
+				this.resetDistrict(val);
 				this.dispatchUpdate();
 			},
-			district(district) {
-				this.zipcode = Data[this.county][district];
+			district(val) {
+				this.zipcode = Data[this.county][val];
 				this.dispatchUpdate();
 			},
 		},

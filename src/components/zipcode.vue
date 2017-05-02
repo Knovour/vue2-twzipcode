@@ -1,12 +1,13 @@
 <template>
 	<input
-		:class="[className, 'zipcode']"
-		:style="style"
+		class="zipcode"
+		style="width: calc((100% - 8px) / 3)"
 		type="text"
 		maxLength="3"
 		v-model="val"
 		:name="name"
 		:placeholder="placeholder"
+		:readonly="readonly"
 		@input="update($event.target.value)"
 	/>
 </template>
@@ -14,17 +15,13 @@
 <script>
 	export default {
 		props: {
-			className:   { type: String },
-			name:        { type: String, default: 'zipcode' },
-			placeholder: { type: String },
-			value:       { type: String },
+			className: String,
+			name: { type: String, default: 'zipcode' },
+			placeholder: String,
+			value: String,
+			readonly: [ String, Boolean ]
 		},
 		computed: {
-			style() {
-				return {
-					width: 'calc((100% - 8px) / 3)'
-				};
-			},
 			val() {
 				return this.value;
 			}

@@ -1,26 +1,29 @@
 <template>
-	<select :class="[className, 'district']" :style="style" :name="name" v-model="selected" @change="$emit('change', $event.target.value)">
+	<select class="district" style="width: calc((100% - 8px) / 3)" :name="name" v-model.lazy="val">
 		<option v-for="district in districts">{{ district }}</option>
 	</select>
 </template>
 
 <script>
 	export default {
-		props: {
-			className: { type: String },
-			name:      { type: String, default: 'district' },
-			value:     { type: String },
-			districts: { type: Array },
-		},
-		computed: {
-			style() {
-				return {
-					width: 'calc((100% - 8px) / 3)'
-				};
-			},
-			selected() {
-				return this.value;
+		data() {
+			return {
+				val: this.value
 			}
 		},
+		props: {
+			className: String,
+			name: { type: String, default: 'district' },
+			value: String,
+			districts: Array
+		},
+		watch: {
+			val() {
+				this.$emit('change', this.val);
+			},
+			value() {
+				this.val = this.value;
+			}
+		}
 	};
 </script>
