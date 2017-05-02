@@ -64,12 +64,14 @@ console.log(county, district, zipcode);  // 台中市, 西區, 403
 |-----------------|--------|-----------------------------------------|-----------------------------------------------------------------------------|
 | names           | Object | `{county: 'county', district: 'district', zipcode: 'zipcode'}` | `{county: 'my-county', district: 'my-district', zipcode: 'my-zipcode'}`       |
 | classNames      | Object | `{county: '', district: '', zipcode: ''}`                      | `{county: 'form-control', district: 'form-control', zipcode: 'form-control'}` |
+| lockCounty   | String, Boolean | ''                                                      | `lock-county`                                                                           |
 | defaultCounty   | String | '基隆市'                                                      | `default-county="台中市"`                                                                           |
 | defaultDistrict | String | ''                                                             | `default-district="西區"`                                                                      |
 | defaultZipcode  | String | ''                                                             | `default-zipcode="403"`                                                                        |
 
 1. *Using props to component, notice `kebab-case`*
 2. **defaultZipcode** is `highest` priority than defaultCounty and defaultDistrict. So if you using both, will be `ignored` defaultCounty and defaultDistrict props.
+3. `lockCounty` will lock the county to default value, and district will be readonly.
 
 
 ## Contributing
