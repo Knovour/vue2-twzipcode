@@ -64,14 +64,15 @@ console.log(county, district, zipcode);  // 台中市, 西區, 403
 |-----------------|--------|-----------------------------------------|-----------------------------------------------------------------------------|
 | names           | Object | `{county: 'county', district: 'district', zipcode: 'zipcode'}` | `{county: 'my-county', district: 'my-district', zipcode: 'my-zipcode'}`       |
 | classNames      | Object | `{county: '', district: '', zipcode: ''}`                      | `{county: 'form-control', district: 'form-control', zipcode: 'form-control'}` |
-| lockCounty   | String, Boolean | ''                                                      | `lock-county`                                                                           |
+| focus   | Object | null                                                      | `focus="{ '台北市': [ '松山區', '大同區' ] }"`                                                                           |
 | defaultCounty   | String | '基隆市'                                                      | `default-county="台中市"`                                                                           |
 | defaultDistrict | String | ''                                                             | `default-district="西區"`                                                                      |
 | defaultZipcode  | String | ''                                                             | `default-zipcode="403"`                                                                        |
 
 1. *Using props to component, notice `kebab-case`*
 2. **defaultZipcode** is `highest` priority than defaultCounty and defaultDistrict. So if you using both, will be `ignored` defaultCounty and defaultDistrict props.
-3. `lockCounty` will lock the county to default value, and district will be readonly.
+3. `focus` will limit the selection by `{ COUNTY_NAME: [ DISTRICT_NAME1, DISTRICT_NAME2... ] }`, and make zipcode readonly.
+4. If district list in `focus` is an empty **Array**, it will use default list instead.
 
 
 ## Contributing
