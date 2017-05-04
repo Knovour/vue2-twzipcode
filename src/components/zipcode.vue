@@ -19,7 +19,7 @@
 			name: { type: String, default: 'zipcode' },
 			placeholder: String,
 			value: String,
-			readonly: [ String, Boolean ]
+			readonly: Boolean
 		},
 		computed: {
 			val() {
