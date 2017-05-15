@@ -71,7 +71,10 @@
 			if(this.defaultZipcode)
 				return this.setCountyAndDistrictFromZipcode(this.defaultZipcode);
 
-			this.county = this.defaultCounty;
+			this.county = (this.withoutFocus || (!this.withoutFocus && Object.keys(this.focus).includes(this.defaultCounty)))
+				? this.defaultCounty
+				: Object.keys(this.focus)[0];
+
 			this.defaultDistrict
 				? this.district = this.defaultDistrict
 				: this.resetDistrict();
